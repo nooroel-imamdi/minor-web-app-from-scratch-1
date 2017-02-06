@@ -1,0 +1,35 @@
+body {
+  font: 100%/1.5 "Arial", sans-serif;
+  color: #2f2f2f;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-bottom: .5em;
+  line-height: 1.1em;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+p {
+  color: #888;
+  margin-bottom: 2em;
+  max-width: 40em;
+}
