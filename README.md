@@ -1,5 +1,8 @@
 # Minor - Web app from scratch
 
+**Assignment links**
+* (5) https://larsdouweschuitema.github.io/web-app-from-scratch/assignment-5-single-page-web-app/
+
 ## Pros and Cons jQuery
 **Pros**
 * Ease of use because of simple syntax and less code to achieve equal results
