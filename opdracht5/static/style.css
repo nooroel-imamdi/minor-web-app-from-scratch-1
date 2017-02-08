@@ -30,7 +30,7 @@ section#best-practices {
 }
 
 nav {
-  background: black;
+  background: #2f2f2f;
   height: 3.750em;
   line-height: 3.750em;
 }
@@ -58,4 +58,11 @@ nav ul li a {
 
 .active {
   display: flex;
+}
+
+@media screen and (min-width: 48em) {
+  nav ul li a:hover, nav ul li a.active {
+    background: white;
+    color: #2f2f2f;
+  }
 }
