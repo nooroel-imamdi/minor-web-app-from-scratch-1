@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  flex-flow: row wrap;
+  font: 100%/1.5 "Pangolin", Arial, sans-serif;
+  margin: 0;
+}
+
+h2 {
+  font-size: 4.5em;
+  margin: 0;
+}
+
+section, nav {
+  flex: 1 100%;
+}
+
+section {
+  align-items: center;
+  display: none;
+  height: calc(100vh - 3.750em);
+  justify-content: center;
+}
+
+section#start {
+  background: #6EE5A1;
+}
+
+section#best-practices {
+  background: #BA77BF;
+}
+
+nav {
+  background: black;
+  height: 3.750em;
+  line-height: 3.750em;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li:first-child {
+  border-right: 1px white solid;
+}
+
+nav ul li a {
+  color: white;
+  display: inline-block;
+  padding: 0 .5em;
+  text-decoration: none;
+}
+
+.active {
+  display: flex;
+}
