@@ -9,6 +9,8 @@
 
   var routes = {
     init: function() {
+      window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
+
       window.onhashchange = function() {
         sections.toggle(window.location.hash);
       };
@@ -32,6 +34,4 @@
   }
 
   app.init();
-
-
 })();
