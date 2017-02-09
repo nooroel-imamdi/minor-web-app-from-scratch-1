@@ -82,7 +82,7 @@ ES6:
         name: 'Lars',
         age: '24'
     }
-    console.log(`$(person.name) is $(person.age) years old`);
+    console.log(`${person.name} is ${person.age} years old`);
 }
 ```
 
