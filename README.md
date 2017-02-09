@@ -1,7 +1,7 @@
 # Minor - Web app from scratch
 
 ## Assignments live preview
-* (5) https://larsdouweschuitema.github.io/minor-web-app-from-scratch/single-page-web-app/index.html
+* Single page web app: https://larsdouweschuitema.github.io/minor-web-app-from-scratch/single-page-web-app/index.html
 
 ## ES6
 ES5:
