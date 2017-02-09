@@ -64,6 +64,28 @@ ES6:
 }
 ```
 
+##### Template literals
+ES5:
+```javascript
+function() {
+    var person = {
+        name: 'Lars',
+        age: '24'
+    }
+    console.log(name + "is " + age + " years old");
+}();
+```
+ES6:
+```javascript
+{
+    const person = {
+        name: 'Lars',
+        age: '24'
+    }
+    console.log(`$(person.name) is $(person.age) years old`);
+}
+```
+
 ## Pros and Cons jQuery
 **Pros**
 * Ease of use because of simple syntax and less code to achieve equal results
