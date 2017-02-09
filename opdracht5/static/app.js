@@ -1,27 +1,27 @@
 "strict mode";
 
-(function() {
-  var app = {
-    init: function() {
+{ 
+  const app = {
+    init: () => {
       routes.init();
     }
   }
 
-  var routes = {
-    init: function() {
+  const routes = {
+    init: () => {
       window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
 
-      window.onhashchange = function() {
+      window.onhashchange = () => {
         sections.toggle(window.location.hash);
       };
     }
   }
 
-  var sections = {
-    toggle: function(route) {
-      var sectionsList = document.querySelectorAll("section");
+  const sections = {
+    toggle: route => {
+      const sectionsList = document.querySelectorAll("section");
 
-      sectionsList.forEach(function(section) {
+      sectionsList.forEach(section => {
         if(route === "#" + section.id) {
           section.classList.add("active");
           document.querySelector("a[href='#" + section.id + "']").classList.add("active");
@@ -34,4 +34,4 @@
   }
 
   app.init();
-})();
+}
