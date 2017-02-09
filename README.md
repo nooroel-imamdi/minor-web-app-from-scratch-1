@@ -26,8 +26,12 @@ ES6:
 // Block global scope
 {
     // Variables
-    const person = {
+    const person = { // 'const' is not updateable
         name: 'Lars'
+    },
+
+    let dog = { // 'let' is updateable
+        name: 'Lassie'
     },
     
     // Functions
