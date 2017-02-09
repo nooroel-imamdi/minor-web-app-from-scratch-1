@@ -4,85 +4,37 @@
 * (5) https://larsdouweschuitema.github.io/minor-web-app-from-scratch/single-page-web-app/index.html
 
 ## ES6
-##### IIFE replacement to block scope
 ES5:
 ```javascript
-function(){
-    const person = {
-        name: 'Lars'
-    }
-}();
-```
-ES6:
-```javascript
-{
-    const person = {
-        name: 'Lars'
-    }
-}
-```
-##### Variables
-ES5:
-```javascript
-function(){
-    var person = {
-        name: 'Lars'
-    }
-}();
-```
-ES6:
-```javascript
-{
-    const person = {
-        name: 'Lars'
-    }
-    
-    let dog = {
-        name: 'Lassie'
-    }
-}
-```
-##### Functions
-ES5:
-```javascript
-function() {
-    var app = {
-        init: function() {
-            // do stuff here
-        };
-    }
-}();
-```
-ES6:
-```javascript
-{
-    const app = {
-        init() => {
-            // do stuff here
-        }
-    }
-}
-```
 
-##### Template literals
-ES5:
-```javascript
-function() {
+// IIFE
+function(){
+    // Variables
     var person = {
-        name: 'Lars',
-        age: '24'
+        name: 'Lars'
+    },
+    
+    // Function
+    speakLoud: function() {
+        // Template literals
+        console.log('Hello' + person.name);
     }
-    console.log(name + "is " + age + " years old");
 }();
 ```
 ES6:
 ```javascript
+// Block global scope
 {
+    // Variable
     const person = {
-        name: 'Lars',
-        age: '24'
-    }
-    console.log(`${person.name} is ${person.age} years old`);
+        name: 'Lars'
+    },
+    
+    // Function
+    speakLoud: () => {
+        // Template literals
+        console.log(`Hello ${person.name}`);
+    },
 }
 ```
 
