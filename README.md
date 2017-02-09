@@ -14,7 +14,7 @@ function(){
         name: 'Lars'
     },
     
-    // Function
+    // Functions
     speakLoud: function() {
         // Template literals
         console.log('Hello' + person.name);
@@ -25,12 +25,12 @@ ES6:
 ```javascript
 // Block global scope
 {
-    // Variable
+    // Variables
     const person = {
         name: 'Lars'
     },
     
-    // Function
+    // Functions
     speakLoud: () => {
         // Template literals
         console.log(`Hello ${person.name}`);
