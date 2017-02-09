@@ -20,16 +20,16 @@
     },
 
     init: () => {
-      debugMessage("Controleer of GPS beschikbaar is...");
+      debugMessage(`Controleer of GPS beschikbaar is...`);
 
       gps.ET.addListener(GPS_AVAILABLE, startInterval);
-      gps.ET.addListener(GPS_UNAVAILABLE, () => {debugMessage('GPS is niet beschikbaar.')});
+      gps.ET.addListener(GPS_UNAVAILABLE, () => {debugMessage(`GPS is niet beschikbaar.`)});
 
       (geo_position_js.init())?ET.fire(GPS_AVAILABLE):ET.fire(GPS_UNAVAILABLE);
     },
 
     startInterval: () => {
-      debugMessage("GPS is beschikbaar, vraag positie.");
+      debugMessage(`GPS is beschikbaar, vraag positie.`);
       updatePosition();
       interval = self.setInterval(updatePosition, REFRESH_RATE);
       ET.addListener(POSITION_UPDATED, checkLocations);
@@ -42,8 +42,8 @@
 
     setPosition: () => {
       currentPosition = position;
-      gps.ET.fire("POSITION_UPDATED");
-      debugMessage(intervalCounter+" positie lat:"+position.coords.latitude+" long:"+position.coords.longitude);
+      gps.ET.fire(`POSITION_UPDATED`);
+      debugMessage(`${intervalCounter} positie lat: ${position.coords.latitude} long: ${position.coords.longitude}`);
     },
 
     checkLocations: () => {
@@ -64,13 +64,13 @@
                   try {
                       (localStorage[locaties[i][0]]=="false")?localStorage[locaties[i][0]]=1:localStorage[locaties[i][0]]++;
                   } catch(error) {
-                      debugMessage("Localstorage kan niet aangesproken worden: "+error);
+                      debugMessage(`Localstorage kan niet aangesproken worden: ${error}`);
                   }
 
   // TODO: Animeer de betreffende marker
 
                   window.location = locaties[i][1];
-                  debugMessage("Speler is binnen een straal van "+ locaties[i][2] +" meter van "+locaties[i][0]);
+                  debugMessage(`Speler is binnen een straal van ${locaties[i][2]} meter van ${locaties[i][0]}`);
               }
           }
       }
@@ -85,16 +85,16 @@
     },
 
     generateMap: () => {
-      debugMessage("Genereer een Google Maps kaart en toon deze in #"+canvasId)
+      debugMessage(`Genereer een Google Maps kaart en toon deze in #${canvasId}`);
       map = new google.maps.Map(document.getElementById(canvasId), myOptions);
 
       const routeList = [];
-      debugMessage("Locaties intekenen, tourtype is: "+tourType);
+      debugMessage(`Locaties intekenen, tourtype is: ${tourType}`);
       for (let i = 0; i < locaties.length; i++) {
           try {
               (localStorage.visited==undefined||isNumber(localStorage.visited))?localStorage[locaties[i][0]]=false:null;
           } catch (error) {
-              debugMessage("Localstorage kan niet aangesproken worden: "+error);
+              debugMessage(`Localstorage kan niet aangesproken worden: ${error}`);
           }
 
           const markerLatLng = new google.maps.LatLng(locaties[i][3], locaties[i][4]);
@@ -115,7 +115,7 @@
       }
 
       if(tourType == LINEAIR){
-          debugMessage("Route intekenen");
+          debugMessage(`Route intekenen`);
           const route = new google.maps.Polyline({
               clickable: false,
               map: map,
@@ -142,7 +142,7 @@
     }
 
     geoErrorHandler: (code, message) => {
-      debug_message('geo.js error '+code+': '+message);
+      debug_message(`geo.js error ${code}: ${message}`);
     }
 
     debugMessage: event => {
