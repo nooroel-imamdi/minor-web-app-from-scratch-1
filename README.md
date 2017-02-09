@@ -1,7 +1,68 @@
 # Minor - Web app from scratch
 
-**Assignment links**
+## Assignments live preview
 * (5) https://larsdouweschuitema.github.io/web-app-from-scratch/assignment-5-single-page-web-app/
+
+## ES6
+##### IIFE replacement to block scope
+ES5:
+```javascript
+function(){
+    const person = {
+        name: 'Lars'
+    }
+}();
+```
+ES6:
+```javascript
+{
+    const person = {
+        name: 'Lars'
+    }
+}
+```
+##### Variables
+ES5:
+```javascript
+function(){
+    var person = {
+        name: 'Lars'
+    }
+}();
+```
+ES6:
+```javascript
+{
+    const person = {
+        name: 'Lars'
+    }
+    
+    let dog = {
+        name: 'Lassie'
+    }
+}
+```
+##### Functions
+ES5:
+```javascript
+function() {
+    var app = {
+        init: function() {
+            // do stuff here
+        };
+    }
+}();
+```
+ES6:
+```javascript
+{
+    const app = {
+        init() => {
+            // do stuff here
+        }
+    }
+}
+```
 
 ## Pros and Cons jQuery
 **Pros**
@@ -39,3 +100,4 @@
 **Sources**
 * https://www.uxpin.com/studio/blog/single-page-vs-multi-page-ui-design-pros-cons/
 * https://www.apicasystem.com/blog/speed-up-the-pros-and-cons-of-single-page-sites/
+* http://wesbos.com/es6-block-scope-iife/
