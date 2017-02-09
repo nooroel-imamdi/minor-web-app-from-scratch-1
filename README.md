@@ -1,7 +1,7 @@
 # Minor - Web app from scratch
 
 ## Assignments live preview
-* (5) https://larsdouweschuitema.github.io/web-app-from-scratch/assignment-5-single-page-web-app/
+* (5) https://larsdouweschuitema.github.io/minor-web-app-from-scratch/single-page-web-app/index.html
 
 ## ES6
 ##### IIFE replacement to block scope
