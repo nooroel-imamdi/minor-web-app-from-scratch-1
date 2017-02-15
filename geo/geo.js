@@ -3,11 +3,11 @@
 { // ES6 Block global scope
   const app = {
 
-    gps: {
+    settings: {
       SANDBOX: "SANDBOX",
       LINEAIR: "LINEAIR",
-      GPS_AVAILABLE: "GPS_AVAILABLE",
-      GPS_UNAVAILABLE: "GPS_UNAVAILABLE",
+      settings_AVAILABLE: "settings_AVAILABLE",
+      settings_UNAVAILABLE: "settings_UNAVAILABLE",
       POSITION_UPDATED: "POSITION_UPDATED",
       REFRESH_RATE: 1000,
       currentPosition: currentPositionMarker = customDebugging = debugId = map = interval =intervalCounter = updateMap = false,
@@ -20,16 +20,16 @@
     },
 
     init: () => {
-      debugMessage(`Controleer of GPS beschikbaar is...`);
+      debugMessage(`Controleer of settings beschikbaar is...`);
 
-      gps.ET.addListener(GPS_AVAILABLE, startInterval);
-      gps.ET.addListener(GPS_UNAVAILABLE, () => {debugMessage(`GPS is niet beschikbaar.`)});
+      settings.ET.addListener(settings_AVAILABLE, startInterval);
+      settings.ET.addListener(settings_UNAVAILABLE, () => {debugMessage(`settings is niet beschikbaar.`)});
 
-      (geo_position_js.init())?ET.fire(GPS_AVAILABLE):ET.fire(GPS_UNAVAILABLE);
+      (geo_position_js.init())?ET.fire(settings_AVAILABLE):ET.fire(settings_UNAVAILABLE);
     },
 
     startInterval: () => {
-      debugMessage(`GPS is beschikbaar, vraag positie.`);
+      debugMessage(`settings is beschikbaar, vraag positie.`);
       updatePosition();
       interval = self.setInterval(updatePosition, REFRESH_RATE);
       ET.addListener(POSITION_UPDATED, checkLocations);
@@ -42,7 +42,7 @@
 
     setPosition: () => {
       currentPosition = position;
-      gps.ET.fire(`POSITION_UPDATED`);
+      settings.ET.fire(`POSITION_UPDATED`);
       debugMessage(`${intervalCounter} positie lat: ${position.coords.latitude} long: ${position.coords.longitude}`);
     },
 
@@ -134,7 +134,7 @@
           title: 'U bevindt zich hier'
       });
 
-      gps.ET.addListener(POSITION_UPDATED, updatePosition);
+      settings.ET.addListener(POSITION_UPDATED, updatePosition);
     },
 
     isNumber: n => {
