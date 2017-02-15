@@ -15,11 +15,11 @@
       ET: new EventTarget():  
     },
 
-    eventTarget: () => {
+    eventTarget() {
       this._listeners = {}
     },
 
-    init: () => {
+    init() {
       debugMessage(`Controleer of settings beschikbaar is...`);
 
       settings.ET.addListener(settings_AVAILABLE, startInterval);
@@ -28,25 +28,25 @@
       (geo_position_js.init())?ET.fire(settings_AVAILABLE):ET.fire(settings_UNAVAILABLE);
     },
 
-    startInterval: () => {
+    startInterval() {
       debugMessage(`settings is beschikbaar, vraag positie.`);
       updatePosition();
       interval = self.setInterval(updatePosition, REFRESH_RATE);
       ET.addListener(POSITION_UPDATED, checkLocations);
     },
 
-    updatePosition: () => {
+    updatePosition() {
       intervalCounter++;
       geo_position_js.getCurrentPosition(_set_position, _geo_error_handler, {enableHighAccuracy:true});
     },
 
-    setPosition: () => {
+    setPosition() {
       currentPosition = position;
       settings.ET.fire(`POSITION_UPDATED`);
       debugMessage(`${intervalCounter} positie lat: ${position.coords.latitude} long: ${position.coords.longitude}`);
     },
 
-    checkLocations: () => {
+    checkLocations() {
       // Liefst buiten google maps om... maar helaas, ze hebben alle coole functies
       for (let i = 0; i < locaties.length; i++) {
           locatie: {
@@ -76,7 +76,7 @@
       }
     },
 
-    calculateDistance: () => {
+    calculateDistance() {
       positions: {
         pos1: new google.maps.LatLng(p1.coords.latitude, p1.coords.longitude,
         pos2: new google.maps.LatLng(p2.coords.latitude, p2.coords.longitude
@@ -84,7 +84,7 @@
       return Math.round(google.maps.geometry.spherical.computeDistanceBetween(positions.pos1, positions.pos2), 0);
     },
 
-    generateMap: () => {
+    generateMap() {
       debugMessage(`Genereer een Google Maps kaart en toon deze in #${canvasId}`);
       map = new google.maps.Map(document.getElementById(canvasId), myOptions);
 
@@ -152,7 +152,7 @@
       currentPositionMarker.setPosition(newPos);
     },
 
-    setCustomDebugging: () => {
+    setCustomDebugging() {
       debugId = this.debugId;
       customDebugging = true;
     }
