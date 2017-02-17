@@ -38,7 +38,6 @@
       routes() {
         routie({
             'books': function() {
-              location.reload();
               console.log('books');
               
               app.getTitle();
@@ -73,7 +72,6 @@
               });
             },
             'otherbooks': function() {
-              location.reload();
               console.log('otherbooks');
             }
         });
