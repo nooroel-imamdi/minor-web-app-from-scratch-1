@@ -1,23 +1,98 @@
+// {
+  // const xhttp = new XMLHttpRequest();
+
+  // const getApi = function(cb){  
+    
+//   }
+
+//   getApi(function(data){
+//     const books = data;
+//     console.log(books);
+//   });
+// }
+
 {
   const xhttp = new XMLHttpRequest();
 
-  const getApi = function(cb){
-
+  const api = function(cb) {   
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
          // Typical action to be performed when the document is ready:
          var data = JSON.parse(this.responseText);
          cb(data);
       }
-    };  
+    };
+
     xhttp.open("GET", "https://www.googleapis.com/books/v1/volumes?q=+:keyes&key=AIzaSyDW8hCnM4qyar5qsg7_65w4DVGGls411dw", true);
     xhttp.send();
-    
   }
 
-  getApi(function(data){
-    data.items.map(function(el) {
-    });
+  api(function(data) {
+    const app = {
+      init() {
+        this.template();
+        this.getBooks();
+      },
+
+      getBooks() {
+        books = data.items.map(function(book) {
+          return book;
+        });
+      },
+
+      getTitle() {
+        this.getBooks();
+
+        title = books.map(function(book) {
+          return book.volumeInfo.title;
+        });        
+      },
+
+      getAuthors() {
+        this.getBooks();
+
+        authors = books.map(function(book) {
+          return book.volumeInfo.authors;
+        });
+      },
+
+      getDescription() {
+        this.getBooks();
+
+        description = books.map(function(book) {
+          return book.volumeInfo.description;
+        });
+      },
+
+      template() {
+        this.getTitle();
+        this.getAuthors();
+        this.getDescription();
+
+        books = [
+          {
+            authors: authors,
+            description: description
+          }
+        ];
+
+        books[0].authors.forEach(function(book, i) {
+
+        var template = document.getElementById("my-template").innerHTML,
+        el = document.createElement('div');
+
+        el.innerHTML = template;
+
+        el.getElementsByClassName("book-title")[0].innerHTML += title[i] + "<br />";
+        el.getElementsByClassName("book-authors")[0].innerHTML += "<strong>Authors:</strong> "+ authors[i] + "<br />";
+        el.getElementsByClassName("book-description")[0].innerHTML += description[i];
+
+        document.getElementById("list").appendChild(el);
+        });
+      }
+    }
+
+    app.init();
   });
 }
 
