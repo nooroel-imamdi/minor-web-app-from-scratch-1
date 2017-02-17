@@ -36,7 +36,47 @@
       },
 
       routes() {
-        // Routing here
+        routie({
+            'books': function() {
+              location.reload();
+              console.log('books');
+              
+              app.getTitle();
+              app.getAuthors();
+              app.getDescription();
+              app.getImage();
+
+              books = [
+                {
+                  title: title,
+                  authors: authors,
+                  description: description,
+                  image: image
+                }
+              ];
+
+              console.log(books);
+
+              books[0].authors.forEach(function(book, i) {
+
+              var template = document.getElementById("books-overview").innerHTML,
+              el = document.createElement('div');
+
+              el.innerHTML = template;
+
+              el.getElementsByClassName("book-title")[0].innerHTML += `${title[i]}<br />`;
+              el.getElementsByClassName("book-image")[0].innerHTML += `<img src="${image[i]}" /><br />`;
+              el.getElementsByClassName("book-authors")[0].innerHTML += `<strong>Authors:</strong>${authors[i]}<br />`;
+              // el.getElementsByClassName("book-description")[0].innerHTML += `${description[i]}`;
+
+              document.getElementById("list").appendChild(el);
+              });
+            },
+            'otherbooks': function() {
+              location.reload();
+              console.log('otherbooks');
+            }
+        });
       },
 
       getBooks() {
@@ -69,31 +109,16 @@
         });
       },
 
-      template() {
-        this.getTitle();
-        this.getAuthors();
-        this.getDescription();
+      getImage() {
+        this.getBooks();
 
-        books = [
-          {
-            authors: authors,
-            description: description
-          }
-        ];
-
-        books[0].authors.forEach(function(book, i) {
-
-        var template = document.getElementById("books-overview").innerHTML,
-        el = document.createElement('div');
-
-        el.innerHTML = template;
-
-        el.getElementsByClassName("book-title")[0].innerHTML += `${title[i]}<br />`;
-        el.getElementsByClassName("book-authors")[0].innerHTML += `<strong>Authors:</strong>${authors[i]}<br />`;
-        el.getElementsByClassName("book-description")[0].innerHTML += `${description[i]}`;
-
-        document.getElementById("list").appendChild(el);
+        image = books.map(function(book) {
+          return book.volumeInfo.imageLinks.smallThumbnail;
         });
+      },
+
+      template() {
+        //
       }
     }
 
