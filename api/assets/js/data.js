@@ -32,6 +32,11 @@
       init() {
         this.template();
         this.getBooks();
+        this.routes();
+      },
+
+      routes() {
+        // Routing here
       },
 
       getBooks() {
@@ -78,14 +83,14 @@
 
         books[0].authors.forEach(function(book, i) {
 
-        var template = document.getElementById("my-template").innerHTML,
+        var template = document.getElementById("books-overview").innerHTML,
         el = document.createElement('div');
 
         el.innerHTML = template;
 
-        el.getElementsByClassName("book-title")[0].innerHTML += title[i] + "<br />";
-        el.getElementsByClassName("book-authors")[0].innerHTML += "<strong>Authors:</strong> "+ authors[i] + "<br />";
-        el.getElementsByClassName("book-description")[0].innerHTML += description[i];
+        el.getElementsByClassName("book-title")[0].innerHTML += `${title[i]}<br />`;
+        el.getElementsByClassName("book-authors")[0].innerHTML += `<strong>Authors:</strong>${authors[i]}<br />`;
+        el.getElementsByClassName("book-description")[0].innerHTML += `${description[i]}`;
 
         document.getElementById("list").appendChild(el);
         });
