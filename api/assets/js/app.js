@@ -1,6 +1,9 @@
 {
   const app = {
     init() {
+      // Routes
+      routes.create();
+
       // Menu functions
       menu.toggle();
       menu.focus.icon();
@@ -9,9 +12,19 @@
 
   }
 
-  const api = {
-
-  },
+  const routes = {
+    // Create routes
+    create() {
+      routie({
+        '': function() {
+          sections.toggle();
+        },
+        'books': function() {
+          sections.toggle();
+        },
+      });
+    }
+  }
 
   const menu = {
     // Variables
