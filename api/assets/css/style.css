@@ -1,0 +1,103 @@
+/* Generic */
+body {
+  font: 100% "Open Sans", Arial, sans-serif;
+  margin: 0;
+}
+
+a:hover {
+  transition: all .3s ease-in-out;
+}
+
+:focus {
+  outline: 2px dashed green;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+nav div {
+  background: black;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+nav input {
+  opacity: 0;
+}
+
+nav img {
+  height: 38px; width: 24px;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+nav ul {
+  background: black;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+nav li {
+
+}
+
+nav a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+}
+
+nav a:hover, nav a:focus {
+  background: red;
+  outline: none;
+}
+
+nav li a {
+
+}
+
+@media screen and (min-width: 48em) {
+  nav {
+    flex-direction: row;
+  }
+
+  nav input {
+    display: none;
+  }
+
+  nav img {
+    display: none;
+  }
+
+  nav li {
+    float: left;
+  }
+}
+
+
+/* Common */
+.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+}
+
+@media screen and (min-width: 48em) {
+  .hide {
+    visibility: visible;
+    opacity: 1;
+    transition: all .3s ease-in-out;    
+  }
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: all .3s ease-in-out;
+}

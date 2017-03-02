@@ -9,6 +9,10 @@
 
   }
 
+  const api = {
+
+  },
+
   const menu = {
     // Variables
     list: document.getElementsByTagName('nav')[0].querySelectorAll('ul')[0],
