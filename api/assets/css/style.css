@@ -16,6 +16,7 @@ a:hover {
 nav {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 nav div {
@@ -40,6 +41,9 @@ nav ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
+  position: absolute;
+  top: 48px; left: 0;
+  width: 100vw;
 }
 
 nav li {
@@ -75,6 +79,12 @@ nav li a {
     display: none;
   }
 
+  nav ul {
+    position: static;
+    top: inherit; left: inherit;
+    width: inherit;
+  }
+
   nav li {
     float: left;
   }
@@ -93,6 +103,7 @@ section.active {
 
 /* Common */
 .hide {
+  height: 0;
   visibility: hidden;
   opacity: 0;
   transition: all .3s ease-in-out;
@@ -100,6 +111,7 @@ section.active {
 
 @media screen and (min-width: 48em) {
   .hide {
+    height: inherit;
     visibility: visible;
     opacity: 1;
     transition: all .3s ease-in-out;    
@@ -107,6 +119,7 @@ section.active {
 }
 
 .show {
+  height: inherit;
   visibility: visible;
   opacity: 1;
   transition: all .3s ease-in-out;
