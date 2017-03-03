@@ -2,7 +2,7 @@
 
 ## Actor Diagram
 ![Actor diagram]
-(https://github.com/larsdouweschuitema/minor-web-app-from-scratch/blob/master/api/actor-diagram.png|alt=actor diagram])
+(https://github.com/larsdouweschuitema/minor-web-app-from-scratch/blob/master/api/actor-diagram.png|alt=actor diagram)
 
 ## Flow diagram
 
