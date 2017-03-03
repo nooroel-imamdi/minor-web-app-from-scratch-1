@@ -6,8 +6,8 @@
 
       // Menu functions
       menu.toggle();
-      menu.focus.icon();
-      menu.focus.lastChild();
+      menu.onFocus.showMenu();
+      menu.onFocus.blurLastItem();
     }
 
   }
@@ -16,14 +16,40 @@
     // Create routes
     create() {
       routie({
-        '': function() {
-          sections.toggle();
+        'start': function() {
+          window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
+
+          window.onhashchange = () => {
+            sections.toggle(window.location.hash);
+          };
         },
         'books': function() {
-          sections.toggle();
+          window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
+
+          window.onhashchange = () => {
+            sections.toggle(window.location.hash);
+          };
         },
       });
     }
+  }
+
+  const sections = {
+    toggle: route => {
+      console.log('test');
+
+      const sectionsList = document.querySelectorAll("section");
+
+      sectionsList.forEach(section => {
+        if(route === `#${section.id}`) {
+          section.classList.add("active");
+          document.querySelector(`a[href='#${section.id}']`).classList.add("active");
+        } else {
+          section.classList.remove("active");
+          document.querySelector(`a[href='#${section.id}']`).classList.remove("active");
+        }
+      });
+    },
   }
 
   const menu = {
@@ -34,9 +60,9 @@
     icon: document.getElementsByTagName('nav')[0].querySelectorAll('img')[0],
 
     // Focus functions
-    focus: {
+    onFocus: {
       // Open menu on icon focus using hidden input element
-      icon() {
+      showMenu() {
         menu.input.addEventListener('focus', function(e) {
           if(menu.list.classList.contains('hide')) {
             menu.show();
@@ -47,7 +73,7 @@
       },
 
       // Hide menu after blur on last item in menu
-      lastChild() {
+      blurLastItem() {
         const lastChild = menu.items[menu.items.length - 1];
 
         lastChild.querySelectorAll('a')[0].addEventListener('blur', function(e) {

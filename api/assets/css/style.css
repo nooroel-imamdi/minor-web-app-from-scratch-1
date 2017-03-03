@@ -80,6 +80,16 @@ nav li a {
   }
 }
 
+/* Sections */
+section {
+  display: none;
+  height: 100vh; width: 100vw;
+}
+
+section.active {
+  display: block;
+}
+
 
 /* Common */
 .hide {
