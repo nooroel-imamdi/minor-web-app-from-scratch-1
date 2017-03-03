@@ -33,7 +33,7 @@
         routes.create();
 
         // Sections
-        sections.template.home();
+        sections.template.listView();
         sections.template.books();
       }
 
@@ -96,7 +96,7 @@
 
     const routes = {
       // Create routes
-      checkHash() {
+      change() {
         window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
 
         window.onhashchange = () => {
@@ -107,10 +107,10 @@
       create() {
         routie({
           'start': function() {
-            routes.checkHash();
+            routes.change();
           },
           'books': function() {
-            routes.checkHash();
+            routes.change();
           },
         });
       }
@@ -133,7 +133,7 @@
       },
 
       template: {
-        home() {
+        listView() {
           // Get all the required data
           books.title();
           books.author();
