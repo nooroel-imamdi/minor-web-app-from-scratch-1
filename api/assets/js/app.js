@@ -3,7 +3,7 @@
     // Variables
     xhttp: new XMLHttpRequest(),
     KEY: 'AIzaSyDW8hCnM4qyar5qsg7_65w4DVGGls411dw',
-    URL:'https://www.googleapis.com/books/v1/volumes?q=+:keyes&key',
+    URL: 'https://www.googleapis.com/books/v1/volumes?q=+:keyes&key',
 
     // Setup
     setup: cb => {
