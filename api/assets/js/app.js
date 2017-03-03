@@ -33,7 +33,8 @@
         routes.create();
 
         // Sections
-        sections.template();
+        sections.template.home();
+        sections.template.books();
       }
 
     }
@@ -131,8 +132,48 @@
         });
       },
 
-      template() {
-        books.title();
+      template: {
+        home() {
+          // Get all the required data
+          books.title();
+          books.author();
+          books.description();
+          books.image();
+
+          // Put the data in a new object
+          collection = [
+            {
+              title: title,
+              author: author,
+              description: description,
+              image: image
+            }
+          ];
+
+          console.log(collection);
+
+          collection[0].author.forEach(function(book, i) {
+
+          // Get list and create new element for each book
+          var template = document.getElementById("books-overview").innerHTML,
+          el = document.createElement('div');
+
+          el.innerHTML = template;
+
+          // Put the data in the specified classes
+          el.getElementsByClassName("book-title")[0].innerHTML += `${title[i]}<br />`;
+          el.getElementsByClassName("book-image")[0].innerHTML += `<img src="${image[i]}" /><br />`;
+          el.getElementsByClassName("book-authors")[0].innerHTML += `<strong>Authors:</strong>${author[i]}<br />`;
+          // el.getElementsByClassName("book-description")[0].innerHTML += `${description[i]}`;
+
+          // Append each child to its parent
+          document.getElementById("list").appendChild(el);
+          });
+        },
+
+        books() {
+          console.log('books');
+        }
       }
     }
 
