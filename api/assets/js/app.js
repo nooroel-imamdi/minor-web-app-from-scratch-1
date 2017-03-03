@@ -132,7 +132,7 @@
         });
       },
 
-      template: {
+      template: { 
         listView() {
           // Get all the required data
           books.title();
