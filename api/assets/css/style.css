@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+h2 {
+  margin: .938em 0 .938em 0;
+}
+
 a:hover {
   transition: all .3s ease-in-out;
 }
@@ -31,9 +35,9 @@ nav input {
 }
 
 nav img {
-  height: 38px; width: 24px;
+  height: 2.375em; width: 1.5em;
   margin-left: auto;
-  margin-right: 15px;
+  margin-right: .938em;
 }
 
 nav ul {
@@ -42,7 +46,7 @@ nav ul {
   margin: 0;
   padding-left: 0;
   position: absolute;
-  top: 48px; left: 0;
+  top: 3em; left: 0;
   width: 100vw;
 }
 
@@ -54,7 +58,7 @@ nav a {
   color: white;
   display: block;
   text-decoration: none;
-  padding: 15px;
+  padding: .938em;
 }
 
 nav a:hover, nav a:focus {
@@ -102,6 +106,13 @@ section.active {
 
 
 /* Common */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: .938em;
+  padding-right: .938em;
+}
+
 .hide {
   height: 0;
   visibility: hidden;
