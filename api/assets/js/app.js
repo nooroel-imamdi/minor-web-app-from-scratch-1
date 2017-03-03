@@ -137,28 +137,25 @@
     }
 
     const books = {
+      // Map the data into seperate data to reduce load
       title() {
-        // Reduce (map) data to title
         title = data.items.map(function(book) {
         return book.volumeInfo.title;
         }); 
       },
 
-      // Reduce (map) data to author
       author() {
         author = data.items.map(function(book) {
           return book.volumeInfo.authors;
         });
       },
 
-      // Reduce (map) data to description
       description() {
         description = data.items.map(function(book) {
           return book.volumeInfo.description;
         });
       },
 
-      // Reduce (map) data to image
       image() {
         image = data.items.map(function(book) {
           return book.volumeInfo.imageLinks.smallThumbnail;
