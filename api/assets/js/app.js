@@ -24,61 +24,18 @@
   api.setup(function(data) {
     const app = {
       init() {
+        // Menu
+        menu.toggle();
+        menu.onFocus.showMenu();
+        menu.onFocus.blurLastItem();
+
         // Routes
         routes.create();
 
         // Sections
         sections.template();
-
-        // Menu
-        menu.toggle();
-        menu.onFocus.showMenu();
-        menu.onFocus.blurLastItem();
       }
 
-    }
-
-    const routes = {
-      // Create routes
-      checkHash() {
-        window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
-
-        window.onhashchange = () => {
-          sections.toggle(window.location.hash);
-        };
-      },
-
-      create() {
-        routie({
-          'start': function() {
-            routes.checkHash();
-          },
-          'books': function() {
-            routes.checkHash();
-          },
-        });
-      }
-    }
-
-    const sections = {
-      toggle: route => {
-        const sectionsList = document.querySelectorAll("section");
-
-        // Change 'active' section equal to hash
-        sectionsList.forEach(section => {
-          if(route === `#${section.id}`) {
-            section.classList.add("active");
-            document.querySelector(`a[href='#${section.id}']`).classList.add("active");
-          } else {
-            section.classList.remove("active");
-            document.querySelector(`a[href='#${section.id}']`).classList.remove("active");
-          }
-        });
-      },
-
-      template() {
-
-      }
     }
 
     const menu = {
@@ -136,6 +93,78 @@
       }
     }
 
+    const routes = {
+      // Create routes
+      checkHash() {
+        window.location.hash ? sections.toggle(window.location.hash) : sections.toggle('#start');
+
+        window.onhashchange = () => {
+          sections.toggle(window.location.hash);
+        };
+      },
+
+      create() {
+        routie({
+          'start': function() {
+            routes.checkHash();
+          },
+          'books': function() {
+            routes.checkHash();
+          },
+        });
+      }
+    }
+
+    const sections = {
+      toggle: route => {
+        const sectionsList = document.querySelectorAll("section");
+
+        // Change 'active' section equal to hash
+        sectionsList.forEach(section => {
+          if(route === `#${section.id}`) {
+            section.classList.add("active");
+            document.querySelector(`a[href='#${section.id}']`).classList.add("active");
+          } else {
+            section.classList.remove("active");
+            document.querySelector(`a[href='#${section.id}']`).classList.remove("active");
+          }
+        });
+      },
+
+      template() {
+        books.title();
+      }
+    }
+
+    const books = {
+      title() {
+        // Reduce (map) data to title
+        title = data.items.map(function(book) {
+        return book.volumeInfo.title;
+        }); 
+      },
+
+      // Reduce (map) data to author
+      author() {
+        author = data.items.map(function(book) {
+          return book.volumeInfo.authors;
+        });
+      },
+
+      // Reduce (map) data to description
+      description() {
+        description = data.items.map(function(book) {
+          return book.volumeInfo.description;
+        });
+      },
+
+      // Reduce (map) data to image
+      image() {
+        image = data.items.map(function(book) {
+          return book.volumeInfo.imageLinks.smallThumbnail;
+        });
+      }
+    }
     // Initialize the app
     app.init();
   });
